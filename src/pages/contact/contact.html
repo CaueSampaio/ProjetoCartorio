@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Painel
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Senha
+      </ion-col>
+      <ion-col>
+        Tipo de serviço
+      </ion-col>
+      <ion-col>
+        Status
+      </ion-col>
+      <ion-col>
+        Tempo médio
+      </ion-col>
+      <ion-col>
+        Hora de chegada
+      </ion-col>
+      <ion-col>
+        Aguardando há
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let password of passwords">
+      <ion-col>
+        {{ password }}
+      </ion-col>
+      <ion-col>
+        Normal
+      </ion-col>
+      <ion-col>
+        Executando
+      </ion-col>
+      <ion-col>
+        00:10:00
+      </ion-col>
+      <ion-col>
+        17:21:33
+      </ion-col>
+      <ion-col>
+        00:08:27
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let user of users">
+      <ion-item (click)="openUser(user.id)">
+        <ion-avatar item-start>
+          <img src="{{ user.avatar }}">
+        </ion-avatar>
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      </ion-item>
+ 
+      <ion-item-options side="left">
+        <button ion-button color="primary" (click)="openEditUser(user.id)">
+            <ion-icon name="create"></ion-icon>
+            Editar
+          </button>
+        <button ion-button color="danger" (click)="deleteUser(user)">
+            <ion-icon name="trash"></ion-icon>
+            Excluir
+          </button>
+      </ion-item-options>
+    </ion-item-sliding>
+ 
+  </ion-list>
+ 
+  <ion-infinite-scroll (ionInfinite)="getUsers($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Aguarde...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Selecione um serviço</ion-label>
+      <ion-select [(ngModel)]="service">
+        <ion-option value="serviceone">Serviço Um</ion-option>
+        <ion-option value="servicetwo">Serviço Dois</ion-option>
+        <ion-option value="servicethree">Serviço Tres</ion-option>
+        <ion-option value="servicefour">Serviço Quatro</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list radio-group>
+    <ion-item>
+      <ion-label>Preferencial</ion-label>
+      <ion-radio checked="true" value="priority"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Normal</ion-label>
+      <ion-radio value="normal"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="openPasswordStatus()" full>Gerar nova senha</button>
+  
+  <br>
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="model.email"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="model.password"></ion-input>
+    </ion-item>
+  </ion-list>
+ 
+  <button ion-button block (click)="createAccount()" color="primary">Criar conta</button>
+</ion-content>
